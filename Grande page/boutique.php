@@ -255,16 +255,12 @@
         </div>
     </div>
 
-<br>
-<br>
-<br>
-<hr>
+    <br>
+    <br>
+    <br>
+    <hr>
     <!-- dispositions des Accessoires & Périphériques -->
     <h1 class="dispo-pc" style="margin-left: 20px; text-decoration:underline">Nos Accessoires & Périphériques</h1>
-
-
-
-
 
 
 
