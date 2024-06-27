@@ -61,11 +61,36 @@
 
     <!-- L'instruction 'include' en PHP est utilisée pour inclure le contenu d'un fichier externe, Cela permet de réutiliser le même code de navigation sur plusieurs pages de votre site web, ce qui facilite la maintenance et la mise à jour du site. -->
     <?php include 'navbar.php'; ?>
-    
+
+
+    <!-- Premier Titre + image titre (soit avec un ordinateur soit 
+     avec une representation directe de 1 étudiant - 1 ordinateur)  EN ATTENDANT-->
+    <!-- avec carousel  -->
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item" style="background-image: url(img/visuel_1.png); height: 600px; background-position: center; background-size: cover;">
+            </div>
+
+            <div class="carousel-item" style="background-image: url(img/high-angle-little-girl-home-online-school-with-laptop.jpg); height: 600px;background-position: center; background-size: cover;">
+                <p style="color: black; font-size: 80px; text-align: center;">
+                    #1 Edudiant 1 Ordinateur
+                </p>
+            </div>
+
+            <div class="carousel-item active" style="background-image: url(img/young-woman-studying-library.jpg); height: 600px; background-position: center; background-size: cover;">
+                <p class="paragraphe1" style="color: white; font-size: 80px; text-align: center; margin-top: 150px;">
+                    #1 Edudiant 1 Ordinateur
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- Qu'est ce que "I Computer"?  -->
     <!-- computer 1 -->
     <div class="container my-5">
-        <h1 class="text-center">Découvrez Le ICOMPUTER </h1>
+        <h1 class="text-center">Découvrez un ICOMPUTER </h1>
         <br>
         <div class="row align-items-center">
             <div class="col-md-6 order-md-2">
@@ -96,8 +121,9 @@
     <br><br>
 
     <!-- Pourquoi utiliser des << I Computer ? >> -->
+    <!-- mettre les titres au lieu de ... raison  -->
     <div class="container my-5 custom-accordion-container">
-        <h1 class="text-center">Pourquoi utiliser le ICOMPUTER ?</h1>
+        <h1 class="text-center">Pourquoi utiliser un ICOMPUTER ?</h1>
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">

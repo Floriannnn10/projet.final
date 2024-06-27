@@ -16,7 +16,7 @@
                      </li>
 
                      <li class="nav-item">
-                         <a style="color: black; font-size:20px; margin-left:20px;" class="nav-link" href="#">Contact</a>
+                         <a style="color: black; font-size:20px; margin-left:20px;" class="nav-link" href="contact.php">Contact</a>
                      </li>
 
                      <!-- <li class="nav-item dropdown">
@@ -60,26 +60,4 @@
      </nav>
  </div>
 
- <!-- Premier Titre + image titre (soit avec un ordinateur soit 
-     avec une representation directe de 1 étudiant - 1 ordinateur)  EN ATTENDANT-->
- <!-- avec carousel  -->
-
- <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-     <div class="carousel-inner">
-
-         <div class="carousel-item" style="background-image: url(img/visuel_1.png); height: 600px; background-position: center; background-size: cover;">
-         </div>
-
-         <div class="carousel-item" style="background-image: url(img/high-angle-little-girl-home-online-school-with-laptop.jpg); height: 600px;background-position: center; background-size: cover;">
-             <p style="color: black; font-size: 80px; text-align: center;">
-                 #1 Edudiant 1 Ordinateur
-             </p>
-         </div>
-
-         <div class="carousel-item active" style="background-image: url(img/young-woman-studying-library.jpg); height: 600px; background-position: center; background-size: cover;">
-             <p class="paragraphe1" style="color: white; font-size: 80px; text-align: center; margin-top: 150px;">
-                 #1 Edudiant 1 Ordinateur
-             </p>
-         </div>
-     </div>
- </div>
+ 

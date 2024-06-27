@@ -21,8 +21,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($client && password_verify($mot_de_passe, $client['mot_de_passe'])) {
             $_SESSION['client_id'] = $client['id'];
-            header('Location:index2.php');
-            exit;
+            
+            // Redirection après connexion réussie
+            if (isset($_SESSION['redirect_url']) && !empty($_SESSION['redirect_url'])) {
+                $redirect_url = $_SESSION['redirect_url'];
+                unset($_SESSION['redirect_url']);
+                header("Location: $redirect_url");
+                exit;
+            } else {
+                header('Location: index2.php');
+                exit;
+            }
         }
 
         // Recherche dans la table des administrateurs
@@ -32,15 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($admin && password_verify($mot_de_passe, $admin['mot_de_passe'])) {
-            $_SESSION['admin'] = $admin['id'];
-            header('Location: admin/dashboard_admin.php');
+            $_SESSION['admin'] = $admin; // Stocke toutes les informations de l'administrateur dans la session
+            header('Location: ordinateur.php');
             exit;
         }
+        
 
         // Si aucune correspondance trouvée
         $_SESSION['error'] = "Email ou mot de passe incorrect.";
-        header('Location: index.php');
+        header('Location: login.php');
         exit;
+
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage();
         exit;
@@ -50,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,8 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        body,
+</head>
+<style>
+     body,
         html {
             margin: 0;
             padding: 0;
@@ -109,28 +120,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             left: 50%;
             transform: translate(-50%, -50%);
         }
-    </style>
-</head>
 
+
+</style>
 <body>
-    <div class="background-video">
-        <video autoplay muted loop id="background-video">
-            <source src="video/Alienware m17 Laptop Product Video (2020).mp4" type="video/mp4">
-            <!-- Ajoutez d'autres sources pour une meilleure compatibilité -->
-            Votre navigateur ne supporte pas la lecture de vidéos.
+    <div class="video-background">
+        <video id="background-video" src="utilisateur/images/MF.mp4" autoplay muted loop>
         </video>
+        <div class="video-overlay"></div>
     </div>
-
     <div class="container">
         <div class="login-form">
             <h1>Connexion</h1>
-            <?php if (isset($_SESSION['error'])) : ?>
+            <?php if (isset($_SESSION['error'])): ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo $_SESSION['error']; ?>
                 </div>
                 <?php unset($_SESSION['error']); ?>
             <?php endif; ?>
-            <form action="index2.php" method="POST">
+            <form action="login.php" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Adresse Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
@@ -141,15 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
-           
-            <p class="text-center" style="margin-top:25px;">Vous n'avez pas de compte ? <br> Inscrivez-vous pour ne rien rater</p>
             <a href="inscription.php" class="btn btn-outline-primary mt-3">S'inscrire</a>
         </div>
     </div>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
 </body>
-
 </html>
